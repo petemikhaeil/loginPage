@@ -10,10 +10,10 @@ function verify($username, $password) {
     }
 }
 
-function createAndFillSession() {
+function createAndFillSession($username, $password) {
     session_start();
-    $_SESSION['name'] = $_POST['name'];
-    $_SESSION['password'] = $_POST['password'];
+    $_SESSION['name'] = $username;
+    $_SESSION['password'] = $password;
     $_SESSION['loggedIn'] = true;
 }
 
@@ -21,22 +21,21 @@ function doShit() {
     if(count($_POST) > 0) {
         $username = (string)$_POST['name'];
         $password = (string)$_POST['password'];
-        if (verify($username, $password) == true) {
-            createAndFillSession();
-            header('Location: account.php');
-        } else {
-            header('Location: loginIndex.php');
-        }
+        tryTologIn($username, $password);
     }
     else {
         return 0;
     }
 }
 
-function validate() {
-    $username = $_POST['name'];
-    $password = $_POST['password'];
+function tryToLogIn($username, $password) {
 
+    if (verify($username, $password) == true) {
+        createAndFillSession($username, $password);
+        header('Location: account.php');
+    } else {
+        header('Location: loginIndex.php');
+    }
 }
 
 doShit();

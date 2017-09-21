@@ -1,5 +1,7 @@
 <?php
-    if($_SESSION['LoggedIn'] == false) {
+session_start();
+
+    if($_SESSION["loggedIn"] == 0) {
         header('Location: loginIndex.php');
     }
 ?>

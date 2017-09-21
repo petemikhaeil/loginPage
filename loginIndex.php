@@ -1,4 +1,11 @@
-<?php require('loginPage.php')?>
+<?php
+    require('loginPage.php');
+    session_start();
+    if($_SESSION['loggedIn'] == true) {
+        header('Location: account.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -11,3 +18,4 @@
 </div>
 </body>
 </html>
+

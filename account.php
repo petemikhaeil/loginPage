@@ -10,6 +10,9 @@ session_start();
 <body>
 <div>
     Hello!
+    <form action = "loginPage.php" method = "post">
+        <a href="logout.php">Logout</a>
+    </form>
 </div>
 </body>
 </html>
